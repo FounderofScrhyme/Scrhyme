@@ -1,0 +1,13 @@
+fastapi==0.104.1
+uvicorn==0.24.0
+python-multipart==0.0.6
+celery==5.3.6
+redis==5.0.1
+librosa==0.10.1
+pyworld==0.3.4
+pydub==0.25.1
+ffmpeg-python==0.2.0
+supabase==2.3.0
+python-jose==3.3.0
+passlib==1.7.4
+python-dotenv==1.0.0 
