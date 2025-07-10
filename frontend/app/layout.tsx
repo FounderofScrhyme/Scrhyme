@@ -8,7 +8,9 @@ import {
   UserButton,
 } from "@clerk/nextjs";
 import "./globals.css";
-import { syncUserToSupabase } from "./actions/syncUser";
+import { syncUserToSupabase } from "./actions/user.action";
+import Navbar from "@/components/Navbar";
+import Sidebar from "@/components/Sidebar";
 
 export const metadata: Metadata = {
   title: "Scrhyme",
@@ -25,20 +27,20 @@ export default async function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body className="bg-slate-950 text-slate-50">
-          <header className="flex justify-end items-center p-4 gap-4 h-16">
-            <SignedOut>
-              <SignInButton />
-              <SignUpButton>
-                <button className="bg-[#6c47ff] text-white rounded-full font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 cursor-pointer">
-                  Sign Up
-                </button>
-              </SignUpButton>
-            </SignedOut>
-            <SignedIn>
-              <UserButton />
-            </SignedIn>
-          </header>
-          {children}
+          <div className="min-h-screen">
+            <Navbar />
+            <main className="py-8">
+              {/* container to center the content */}
+              <div className="max-w-7xl mx-auto px-4">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                  <div className="hidden lg:block lg:col-span-3">
+                    <Sidebar />
+                  </div>
+                  <div className="lg:col-span-9">{children}</div>
+                </div>
+              </div>
+            </main>
+          </div>
         </body>
       </html>
     </ClerkProvider>
